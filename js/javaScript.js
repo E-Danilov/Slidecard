@@ -16,14 +16,20 @@ const containerSrc_info = [
     
 
 ]
-
+containerSrc_info.forEach(element => {
+    if (element.info.includes("hipertext")) {
+        console.log(element.info);
+        
+    }
+})
 
 containerSrc_info.forEach(element => {
     const img = document.createElement("img");
     img.className = "btn"
     img.src = element.src_btn;
     buttonsContainer.append(img)
-})
+    
+}) 
 
 
 const footerDecoration = document.createElement("div")
@@ -52,3 +58,34 @@ containerSrc_info.forEach(item => {
 
     
 })
+const buttons = document.querySelectorAll('.btn');
+
+
+const cardsStyle = [
+    {position: '600px', color: '#f5870a'},
+    {position: '0', color: '#1255ff'},
+    {position: '-800px', color: '#ffe81a'},
+];
+//Arroy Функция
+// const project = () =>{
+
+// }
+
+const initialPosition = () =>{
+    buttons[1].classList.add("active");
+    body.style.backgroundColor = cardsStyle[1].color;
+    slideContainer.style.marginLeft = cardsStyle[1].position;
+  }
+  initialPosition()
+
+  const slideshow = () =>{
+    buttons.forEach((btn, idx) =>{
+        btn.addEventListener("click",() =>{
+            buttons.forEach(el => el.classList.remove('active'));
+            btn.classList.add('active');
+            body.style.backgroundColor = cardsStyle[idx].color;
+    slideContainer.style.marginLeft = cardsStyle[idx].position;
+        })
+    })
+  }
+  slideshow()
